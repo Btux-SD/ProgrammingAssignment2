@@ -1,7 +1,8 @@
 ## Put comments here that give an overall description of what your
 ## functions do
 
-## This function creates a matrix.
+## This function creates a matrix and contains 2 derived functions for makeCacheMatrix that
+## will be used in the next function cacheSolve and are used to do a initial set.
 
 makeCacheMatrix <- function(x = matrix()) {
     s<-NULL
