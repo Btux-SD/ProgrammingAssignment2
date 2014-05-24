@@ -1,15 +1,33 @@
 ## Put comments here that give an overall description of what your
 ## functions do
 
-## Write a short comment describing this function
+## This function creates a matrix.
 
 makeCacheMatrix <- function(x = matrix()) {
-
+    s<-NULL
+    set<-function(y){
+        x<<-y
+        s<<-NULL
+    }
+    get<-function() x
+    setsolve<-function(solve) s<<- solve
+    getsolve<-function() s
+    list(set=set, get=get,
+         setsolve=setsolve,
+         getsolve=getsolve)
 }
 
-
-## Write a short comment describing this function
+## This function calculates the inverse ( with the function "solve"). First it checks if
+## the solve has already been applied.
 
 cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
+    s<-x$getsolve()
+    if(!is.null(s)){
+        message("You are getting cached data :-)")
+        return(s)
+    }
+    matrix<-x$get()
+    s<-solve(matrix, ...)
+    x$setsolve(s)
+    s
 }
